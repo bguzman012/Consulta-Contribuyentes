@@ -1,0 +1,9 @@
+psycopg2-binary 
+pandas
+BeautifulSoup4
+requests
+Django==3.2.10
+djangorestframework 
+lxml
+APScheduler
+selenium
