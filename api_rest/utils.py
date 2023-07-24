@@ -95,7 +95,7 @@ def prepare_data(param_busqueda):
     except Exception:
         close_selenium(driver)
         
-        return 400, {}
+        return 404, {}
 
 # def prepare_data(param_tipo, param_busqueda):
 
@@ -245,16 +245,6 @@ def leer_archivo_datos(nombre_archivo):
                     estado = quitar_espacios_extras(campos[9])
                     regimen_pagos = quitar_espacios_extras(campos[10])
 
-                    data_contribuyente = {
-                        "num_documento_identificacion": num_ident,
-                        "nombre": nombre,
-                        "nombre_comercial": nombre_comercial,
-                        "actividad_economica": actividad_economica,
-                        "fecha": fecha,
-                        "estado": estado,
-                        "regimen_pagos": regimen_pagos
-                    }
-                    
                     registros.append(Contribuyente(num_documento_identificacion= num_ident,
                         nombre= nombre,
                         nombre_comercial= nombre_comercial,
