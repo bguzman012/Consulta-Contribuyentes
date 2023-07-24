@@ -16,12 +16,9 @@ def prepare_data(param_busqueda):
     driver = init_selenium()
     driver.get('https://www.dgii.gov.do/app/WebApps/ConsultasWeb/consultas/rnc.aspx#')
 
-    title = "No encontrado"
-
     try:
-        title = driver.title
 
-            # Esperar hasta que el campo de RNC esté visible y sea interactivo
+        # Esperar hasta que el campo de RNC esté visible y sea interactivo
         campo_rnc = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, '//*[@id="ctl00_cphMain_txtRNCCedula"]'))
         )
@@ -98,112 +95,8 @@ def prepare_data(param_busqueda):
         close_selenium(driver)
         
         return 404, {}
-
-# def prepare_data(param_tipo, param_busqueda):
-
-#     driver = init_selenium()
-#     driver.get('https://www.dgii.gov.do/app/WebApps/ConsultasWeb/consultas/rnc.aspx#')
-
-#     title = "No encontrado"
-
-#     try:
-#         title = driver.title
-
-#         if param_tipo == "cedula":
-#             WebDriverWait(driver, 10).until(
-#                 EC.element_to_be_clickable((By.XPATH, '//*[@id="aBusquedaPorRNC"]'))
-#             ).click()
-#             xpath_busqueda  = '//*[@id="ctl00_cphMain_txtRNCCedula"]'
-#             xpath_btn_buscar = '//*[@id="ctl00_cphMain_btnBuscarPorRNC"]'
-        
-#         elif param_tipo == "nombre":
-#             WebDriverWait(driver, 10).until(
-#                 EC.element_to_be_clickable((By.XPATH, '//*[@id="aBusquedaPorRazonSocial"]'))
-#             ).click()
-#             xpath_busqueda = '//*[@id="ctl00_cphMain_txtRazonSocial"]'
-#             xpath_btn_buscar = '//*[@id="ctl00_cphMain_btnBuscarPorRazonSocial"]'
-
-#         campo_busqueda = WebDriverWait(driver, 10).until(
-#             EC.element_to_be_clickable((By.XPATH, xpath_busqueda))
-#         )
-
-#         # Esperar hasta que el botón de búsqueda esté visible y sea interactivo
-#         boton_buscar = WebDriverWait(driver, 10).until(
-#             EC.element_to_be_clickable((By.XPATH, xpath_btn_buscar))
-#         )
-
-#         campo_busqueda.send_keys(param_busqueda)
-
-#         # campo_rnc.send_keys("0106786031")
-
-#         time.sleep(1)
-
-#         boton_buscar.click()
-
-#         time.sleep(1)
-
-#         elemento_encontrado = WebDriverWait(driver, 10).until(
-#             EC.presence_of_element_located((By.XPATH, '//*[@id="ctl00_cphMain_divBusqueda"]/div[1]/h4'))
-#         )
-
-#         if elemento_encontrado.text != "Resultados de la búqueda":
-#             return False, {}
-
-#         cedula_rcn = WebDriverWait(driver, 10).until(
-#             EC.presence_of_element_located((By.XPATH, '//*[@id="ctl00_cphMain_dvDatosContribuyentes"]/tbody/tr[1]/td[2]'))
-#         )
-
-#         nombre_razon_social = WebDriverWait(driver, 10).until(
-#             EC.presence_of_element_located((By.XPATH, '//*[@id="ctl00_cphMain_dvDatosContribuyentes"]/tbody/tr[2]/td[2]'))
-#         )
-
-#         nombre_comercial = WebDriverWait(driver, 10).until(
-#             EC.presence_of_element_located((By.XPATH, '//*[@id="ctl00_cphMain_dvDatosContribuyentes"]/tbody/tr[3]/td[2]'))
-#         )
-
-#         categoria = WebDriverWait(driver, 10).until(
-#             EC.presence_of_element_located((By.XPATH, '//*[@id="ctl00_cphMain_dvDatosContribuyentes"]/tbody/tr[4]/td[2]'))
-#         )
-
-#         regimen = WebDriverWait(driver, 10).until(
-#             EC.presence_of_element_located((By.XPATH, '//*[@id="ctl00_cphMain_dvDatosContribuyentes"]/tbody/tr[5]/td[2]'))
-#         )
-
-#         estado = WebDriverWait(driver, 10).until(
-#             EC.presence_of_element_located((By.XPATH, '//*[@id="ctl00_cphMain_dvDatosContribuyentes"]/tbody/tr[6]/td[2]'))
-#         )
-
-#         actividad_economica = WebDriverWait(driver, 10).until(
-#             EC.presence_of_element_located((By.XPATH, '//*[@id="ctl00_cphMain_dvDatosContribuyentes"]/tbody/tr[7]/td[2]'))
-#         )
-
-#         adm_local = WebDriverWait(driver, 10).until(
-#             EC.presence_of_element_located((By.XPATH, '//*[@id="ctl00_cphMain_dvDatosContribuyentes"]/tbody/tr[8]/td[2]'))
-#         )
-
-#         data_contribuyente = {
-#             "cedula_rcn": cedula_rcn.text,
-#             "nombre_razon": nombre_razon_social.text,
-#             "nombre_comercial": nombre_comercial.text,
-#             "categoria": categoria.text,
-#             "regimen": regimen.text,
-#             "estado": estado.text,
-#             "actividad_economica": actividad_economica.text,
-#             "adm_local": adm_local.text
-#         }
-
-#         return True, data_contribuyente
-
-#     except Exception as error:
-#         mensaje_error = str(error)
-#         print("Ocurrió un error:", mensaje_error)
-
-#         close_selenium(driver)
-#         pass
-
-#     print(title)
-#     return title
-
+    
+    
 def init_selenium():
 
     options = Options()
@@ -211,7 +104,6 @@ def init_selenium():
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
     driver = webdriver.Chrome(options=options)
-    
     
     return driver
 
