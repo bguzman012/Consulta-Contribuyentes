@@ -8,6 +8,7 @@ import os
 import re
 from datetime import datetime
 from .models import Contribuyente
+from webdriver_manager.chrome import ChromeDriverManager
 
 def prepare_data(param_busqueda):
 
@@ -206,9 +207,10 @@ def init_selenium():
 
     chrome_options = Options()
     chrome_options.add_argument('--headless')
+    
+    driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
                                 
     # driver = webdriver.Chrome(options=chrome_options)
-    driver = webdriver.Chrome(executable_path='/usr/local/bin/chromedriver', options=chrome_options)
     
     return driver
 

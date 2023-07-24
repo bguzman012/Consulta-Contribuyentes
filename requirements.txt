@@ -7,3 +7,4 @@ djangorestframework
 lxml
 APScheduler
 selenium
+webdriver_manager
