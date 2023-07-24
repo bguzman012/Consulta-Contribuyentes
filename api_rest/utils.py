@@ -205,7 +205,10 @@ def prepare_data(param_busqueda):
 def init_selenium():
 
     chrome_options = Options()
-    driver = webdriver.Chrome(options=chrome_options)
+    chrome_options.add_argument('--headless')
+                                
+    # driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(executable_path='/usr/local/bin/chromedriver', options=chrome_options)
     
     return driver
 
